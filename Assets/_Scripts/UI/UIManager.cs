@@ -7,12 +7,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class UIManager : MonoBehaviour
 {
-    //[Header("Objects to Disable")]
-    //public GameObject reticle;
-    //public GameObject playerController;
-    //public GameObject playerCam;
-    //public GameObject descriptions;
-    //public GameObject achievementBox;
 
     [Header("Panel Settings")]
     public GameObject panel;
@@ -38,12 +32,7 @@ public class UIManager : MonoBehaviour
             else
             {
                 panel.SetActive(true);
-                //reticle.SetActive(false);
                 animator.SetInteger("AnimState", 1);
-                //playerController.GetComponent<FirstPersonController>().enabled = false;
-                //playerCam.GetComponent<BlockEditingSuite>().enabled = false;
-                //descriptions.SetActive(false);
-                //achievementBox.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
@@ -57,12 +46,7 @@ public class UIManager : MonoBehaviour
         animator.SetInteger("AnimState", 0);
 
         yield return new WaitForSeconds(0.2f);
-        //descriptions.SetActive(true);
-        //playerCam.GetComponent<BlockEditingSuite>().enabled = true;
-        //playerController.GetComponent<FirstPersonController>().enabled = true;
-        //reticle.SetActive(true);
         panel.SetActive(false);
-        //BlockEditingSuite.itemsHaveChanged = true;
     }
 
 }
