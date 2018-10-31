@@ -141,7 +141,8 @@ public class PlayerController : MonoBehaviour
     private void _bulletFire()
     {
         var newBullet = Instantiate(bullet, transform.position + new Vector3(0.0f, 45.0f, 0.0f), Quaternion.identity);
-		newBullet.transform.parent = canvas.transform;
+		//newBullet.transform.parent = canvas.transform;
+        newBullet.transform.SetParent(canvas.transform);
 
 		newBullet.GetComponent<RectTransform>().rect.Set(newBullet.transform.position.x,newBullet.transform.position.y, 64, 64);
 		newBullet.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);

@@ -23,4 +23,15 @@ public class BulletController : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 	}
+
+
+	public void OnTriggerEnter2D(Collider2D other) {
+		if(other.tag == "Enemy") {
+			Destroy(other.gameObject);
+			Destroy(this.gameObject);
+
+			/* CPP Code goes here */
+		}
+		
+	}
 }

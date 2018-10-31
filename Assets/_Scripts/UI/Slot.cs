@@ -24,6 +24,9 @@ public class Slot : MonoBehaviour, IDropHandler
             Draggable.itemBeingDragged.transform.SetParent(transform);
             Draggable.itemBeingDragged.transform.localScale = new Vector3(0.66f, 0.66f, 0.66f);
             Draggable.itemBeingDragged.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            Destroy(Draggable.itemBeingDragged.gameObject.GetComponent("Draggable"));
+
+            /* CPP goes here */
         }
     }
 

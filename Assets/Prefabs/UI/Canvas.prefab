@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 50671254929865154}
   m_Layer: 5
   m_Name: Mushroom
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2100,7 +2100,7 @@ GameObject:
   - component: {fileID: 114519181869578628}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3258,7 +3258,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!50 &50163804310568800
 Rigidbody2D:
@@ -3278,7 +3278,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!50 &50280654785985388
 Rigidbody2D:
@@ -3318,7 +3318,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 7
 --- !u!50 &50858342397261004
 Rigidbody2D:
@@ -3338,7 +3338,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &61372489708975376
 BoxCollider2D:
@@ -10755,7 +10755,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   bullet: {fileID: 1089150084800418, guid: e26b67be10ef0f848978ff0c95bf0a92, type: 2}
-  canvas: {fileID: 0}
 --- !u!114 &114703839385690670
 MonoBehaviour:
   m_ObjectHideFlags: 1
