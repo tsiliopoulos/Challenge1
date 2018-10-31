@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
+                PlayerController.canMove = false;
+
                 
                 foreach (var tile in gameController.tiles)
                 {
@@ -57,6 +59,10 @@ public class UIManager : MonoBehaviour
             tile.GetComponent<Image>().color = Color.black;
         }
 
+        if(GameController.GamePlaying) {
+            PlayerController.canMove = true;
+        }
+        
 
         yield return new WaitForSeconds(0.2f);
         panel.SetActive(false);

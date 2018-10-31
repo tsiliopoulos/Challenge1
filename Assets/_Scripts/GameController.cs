@@ -7,10 +7,12 @@ public class GameController : MonoBehaviour {
 
 	public List<GameObject> tiles;
 
+	public static bool GamePlaying;
+
 
 	// Use this for initialization
 	void Start () {
-		
+		GamePlaying = false;
 	}
 	
 	// Update is called once per frame
@@ -34,5 +36,10 @@ public class GameController : MonoBehaviour {
 			count++;
 		}
 		*/
+	}
+
+	public void OnGameStart() {
+		GamePlaying = true;
+		PlayerController.canMove = true;
 	}
 }
