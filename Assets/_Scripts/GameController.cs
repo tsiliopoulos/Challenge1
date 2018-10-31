@@ -9,10 +9,11 @@ public class GameController : MonoBehaviour {
 
 	public static bool GamePlaying;
 
-
 	// Use this for initialization
 	void Start () {
 		GamePlaying = false;
+
+
 	}
 	
 	// Update is called once per frame
@@ -42,4 +43,10 @@ public class GameController : MonoBehaviour {
 		GamePlaying = true;
 		PlayerController.canMove = true;
 	}
+
+	public void OnGameStop() {
+		GamePlaying = false;
+		PlayerController.canMove = false;
+	}
 }
+

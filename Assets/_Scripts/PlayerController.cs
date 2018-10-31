@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 	[Header("Options")]
     public int playerSpeed;
 	public static bool canMove;
+	public GameObject bullet;
 
     private bool canMoveLeft;
     private bool canMoveRight;
@@ -25,10 +27,13 @@ public class PlayerController : MonoBehaviour
     private bool canMoveDown;
     private Directions lastMove;
 
+	private GameObject canvas;
+
 
     // Use this for initialization
     void Start()
     {
+		canvas = GameObject.FindWithTag("Canvas");
 		canMove = false;
         _resetMove();
     }
@@ -123,9 +128,26 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+
+		if(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) {
+
+			if(Time.frameCount % 10 == 0) {
+				_bulletFire();
+			}
+			
+		}
 	}
 
-	private void _resetMove()
+    private void _bulletFire()
+    {
+        var newBullet = Instantiate(bullet, transform.position + new Vector3(0.0f, 45.0f, 0.0f), Quaternion.identity);
+		newBullet.transform.parent = canvas.transform;
+
+		newBullet.GetComponent<RectTransform>().rect.Set(newBullet.transform.position.x,newBullet.transform.position.y, 64, 64);
+		newBullet.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+	}
+
+    private void _resetMove()
     {
         canMoveLeft = true;
         canMoveRight = true;
