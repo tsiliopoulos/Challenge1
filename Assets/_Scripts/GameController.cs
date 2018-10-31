@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class GameController : MonoBehaviour {
 
 	public List<GameObject> tiles;
@@ -15,6 +16,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		var count = 0;
+		/* 
 		foreach (var tile in tiles)
 		{
 			if(tile.transform.childCount > 0) {
@@ -31,5 +33,6 @@ public class GameController : MonoBehaviour {
 			}
 			count++;
 		}
+		*/
 	}
 }

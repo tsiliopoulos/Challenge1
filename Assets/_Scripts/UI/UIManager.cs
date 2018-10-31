@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject panelSpawnPoint;
     public float panelSpeed;
     public Animator animator;
+    public GameController gameController;
 
     // Use this for initialization
     void Start()
@@ -35,6 +36,12 @@ public class UIManager : MonoBehaviour
                 animator.SetInteger("AnimState", 1);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+
+                
+                foreach (var tile in gameController.tiles)
+                {
+                    tile.GetComponent<Image>().color = Color.grey;
+                }
             }
         }
     }
@@ -44,6 +51,12 @@ public class UIManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.2f);
         animator.SetInteger("AnimState", 0);
+
+        foreach (var tile in gameController.tiles)
+        {
+            tile.GetComponent<Image>().color = Color.black;
+        }
+
 
         yield return new WaitForSeconds(0.2f);
         panel.SetActive(false);
