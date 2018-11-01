@@ -14,10 +14,13 @@ public class GameController : MonoBehaviour {
   public Text gameStatusLabel;
 	public static AudioSource enemyHitSound;
 
+	public static int numCentipedeHeads;
+
 	// Use this for initialization
 	void Start () {
 		GamePlaying = false;
 		enemyHitSound = GetComponent<AudioSource>();
+		numCentipedeHeads = 0;
 	}
 
 	// Update is called once per frame

@@ -38,6 +38,9 @@ public class BulletController : MonoBehaviour
     {
         if ((GameController.GamePlaying) && (!UIManager.isVisible))
         {
+            /* These conditional statements are separate to allow for
+              allocating a variant point value for each enemy type hit */ 
+
             if (other.tag == "Enemy")
             {
                 Destroy(other.gameObject);
@@ -46,24 +49,28 @@ public class BulletController : MonoBehaviour
                 /* CPP Code goes here */
             }
 
-            if (other.tag == "Grid")
-            {
-                 Destroy(this.gameObject);
-            }
-
-            if (other.tag == "Centipede")
+            if (other.name == "Centipede_Head")
             {
                 Destroy(other.gameObject);
                 StartCoroutine(_destroyBullet());
             }
+
+            if(other.name == "Centipede_Body") {
+                Destroy(other.gameObject);
+                StartCoroutine(_destroyBullet());
+            }
+
+            if (other.tag == "Grid")
+            {
+                 Destroy(this.gameObject);
+            }
         }
     }
-
 
     private IEnumerator _destroyBullet() 
     {
         GameController.enemyHitSound.Play();
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.01f);
         Destroy(this.gameObject);
     }
 }

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\BulletController.cs" />
+     <Compile Include="Assets\_Scripts\CentipedeBodyController.cs" />
      <Compile Include="Assets\_Scripts\CentipedeController.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\MushroomController.cs" />

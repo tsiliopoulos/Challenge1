@@ -1827,9 +1827,10 @@ GameObject:
   - component: {fileID: 222825790901367014}
   - component: {fileID: 114802758616237760}
   - component: {fileID: 225547715914265510}
-  - component: {fileID: 114494461510444868}
   - component: {fileID: 61545985423908390}
   - component: {fileID: 50280654785985388}
+  - component: {fileID: 114978713563423724}
+  - component: {fileID: 114494461510444868}
   m_Layer: 5
   m_Name: Centipede_Body
   m_TagString: Centipede
@@ -13842,6 +13843,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5ca67186e1bc04d8e990003a97292c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114978713563423724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1557652544311142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683079aa25a890d47b6866f5b2ea60d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centipedeHead: {fileID: 1285914315948474}
+  canvas: {fileID: 1626442786885924}
 --- !u!114 &114979247778780026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18243,7 +18257,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224940835862534268
 RectTransform:

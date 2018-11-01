@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour
           {
               gameObject.transform.SetParent(transform);
           }
+          GameController.gameObjects.Clear();
         }
 
 

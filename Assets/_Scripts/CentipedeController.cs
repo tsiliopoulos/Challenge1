@@ -15,6 +15,7 @@ public class CentipedeController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		this.name = "Centipede_Head";
         isResetting = false;
         isFacingRight = true;
     }
