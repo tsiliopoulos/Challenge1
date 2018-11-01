@@ -15,9 +15,12 @@ public class UIManager : MonoBehaviour
     public Animator animator;
     public GameController gameController;
 
+    public static bool isVisible;
+
     // Use this for initialization
     void Start()
     {
+        isVisible = false;
         panel.SetActive(false);
     }
 
@@ -33,13 +36,14 @@ public class UIManager : MonoBehaviour
             else
             {
                 panel.SetActive(true);
+                isVisible = true;
                 animator.SetInteger("AnimState", 1);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
                 PlayerController.canMove = false;
 
-                
+
                 foreach (var tile in gameController.tiles)
                 {
                     tile.GetComponent<Image>().color = Color.grey;
@@ -50,7 +54,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator ClosePanel()
     {
-        
+
         yield return new WaitForSeconds(0.2f);
         animator.SetInteger("AnimState", 0);
 
@@ -62,9 +66,17 @@ public class UIManager : MonoBehaviour
         if(GameController.GamePlaying) {
             PlayerController.canMove = true;
         }
-        
+
+        if(GameController.gameObjects.Count > 0) {
+          foreach (var gameObject in GameController.gameObjects)
+          {
+              gameObject.transform.SetParent(transform);
+          }
+        }
+
 
         yield return new WaitForSeconds(0.2f);
+        isVisible = false;
         panel.SetActive(false);
     }
 

@@ -5,6 +5,11 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IDropHandler
 {
+
+  void start() {
+
+  }
+
     public GameObject item
     {
         get
@@ -24,6 +29,7 @@ public class Slot : MonoBehaviour, IDropHandler
             Draggable.itemBeingDragged.transform.SetParent(transform);
             Draggable.itemBeingDragged.transform.localScale = new Vector3(0.66f, 0.66f, 0.66f);
             Draggable.itemBeingDragged.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            GameController.gameObjects.Add(Draggable.itemBeingDragged);
             Destroy(Draggable.itemBeingDragged.gameObject.GetComponent("Draggable"));
 
             /* CPP goes here */

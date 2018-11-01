@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114476996767874876}
   m_Layer: 5
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   bullet: {fileID: 1089150084800418, guid: e26b67be10ef0f848978ff0c95bf0a92, type: 2}
-  canvas: {fileID: 0}
 --- !u!114 &114764904024370838
 MonoBehaviour:
   m_ObjectHideFlags: 1

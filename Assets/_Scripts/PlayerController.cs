@@ -41,10 +41,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(canMove) {
+		if(canMove && (!UIManager.isVisible)) {
 			_getInput();
 		}
-		
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
 	// PRIVATE METHODS
 
-	private void _getInput() 
+	private void _getInput()
 	{
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
@@ -134,13 +134,13 @@ public class PlayerController : MonoBehaviour
 			if(Time.frameCount % 10 == 0) {
 				_bulletFire();
 			}
-			
+
 		}
 	}
 
     private void _bulletFire()
     {
-        var newBullet = Instantiate(bullet, transform.position + new Vector3(0.0f, 45.0f, 0.0f), Quaternion.identity);
+        var newBullet = Instantiate(bullet, transform.position + new Vector3(0.0f, 65.0f, 0.0f), Quaternion.identity);
 		//newBullet.transform.parent = canvas.transform;
         newBullet.transform.SetParent(canvas.transform);
 

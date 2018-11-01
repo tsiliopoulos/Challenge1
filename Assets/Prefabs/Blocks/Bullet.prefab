@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 222811956517639178}
   - component: {fileID: 114294096841837356}
   - component: {fileID: 225988679268130504}
-  - component: {fileID: 114898375602710662}
   - component: {fileID: 82718400344567696}
   - component: {fileID: 61963412712625164}
+  - component: {fileID: 50895605336913240}
+  - component: {fileID: 114898375602710662}
   m_Layer: 5
   m_Name: Bullet
   m_TagString: Untagged
@@ -32,6 +33,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!50 &50895605336913240
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089150084800418}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &61963412712625164
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -55,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 26, y: 128}
+  m_Size: {x: 26, y: 61}
   m_EdgeRadius: 0
 --- !u!82 &82718400344567696
 AudioSource:
@@ -190,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c355c631e73b08a4185618639c6d1476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   screenHeight: 485
 --- !u!222 &222811956517639178
 CanvasRenderer:
