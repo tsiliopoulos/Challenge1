@@ -2,11 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 //using UnityStandardAssets.Characters.FirstPerson;
 
 [System.Serializable]
 public class UIManager : MonoBehaviour
 {
+    const string DLL_NAME = "DragDropPlugin";
+    [DllImport(DLL_NAME)]
+    private static extern void Initalize();
+    [DllImport(DLL_NAME)]
+    private static extern System.IntPtr CreateCommand(int x, int y);
+    [DllImport(DLL_NAME)]
+    private static extern void ExecuteCommand(System.IntPtr commands);
+    [DllImport(DLL_NAME)]
+    private static extern void Undo();
+    [DllImport(DLL_NAME)]
+    private static extern void Redo();
+    [DllImport(DLL_NAME)]
+    private static extern bool CheckGridAtPosition(int x, int y);
+    [DllImport(DLL_NAME)]
+    private static extern void CleanUp();
+
+    public static Dictionary<Vector2,System.IntPtr> pointers=new Dictionary<Vector2, System.IntPtr>();
+
+    private int x = 0;
+    private int y = 0;
 
     [Header("Panel Settings")]
     public GameObject panel;
@@ -20,7 +41,20 @@ public class UIManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Initalize();
         isVisible = false;
+        foreach (var tile in gameController.tiles)
+        {
+           tile.GetComponent<GridPosition>().gridPointer = CreateCommand(x, y);
+            tile.GetComponent<GridPosition>().x = x;
+            tile.GetComponent<GridPosition>().y = y;
+            x++;
+            if (x==12)
+            {
+                y++;
+                x = 0;
+            }
+        }
         panel.SetActive(false);
     }
 
@@ -46,9 +80,14 @@ public class UIManager : MonoBehaviour
 
                 foreach (var tile in gameController.tiles)
                 {
+
                     tile.GetComponent<Image>().color = Color.grey;
                 }
             }
+        }
+        if (GameController.GamePlaying == true && panel.activeInHierarchy)
+        {
+            StartCoroutine(this.ClosePanel());
         }
     }
 
@@ -81,5 +120,9 @@ public class UIManager : MonoBehaviour
         panel.SetActive(false);
     }
 
+    private void OnApplicationQuit()
+    {
+        CleanUp();
+    }
 }
 

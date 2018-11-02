@@ -11,6 +11,7 @@ public class CentipedeController : MonoBehaviour
 
     private bool isFacingRight;
     private bool isResetting;
+	public bool isInGame;
 
     // Use this for initialization
     void Start()
@@ -18,6 +19,7 @@ public class CentipedeController : MonoBehaviour
 		this.name = "Centipede_Head";
         isResetting = false;
         isFacingRight = true;
+		isInGame = false;
     }
 
     // Update is called once per frame

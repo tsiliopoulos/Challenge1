@@ -10,6 +10,7 @@ public class SpiderController : MonoBehaviour
     public float speed;
     public GameObject mushroom;
     public GameObject canvas;
+    public bool isInGame;
 
     private bool isResetting;
 
@@ -17,6 +18,7 @@ public class SpiderController : MonoBehaviour
     void Start()
     {
         isResetting = false;
+        isInGame = false;
     }
 
     // Update is called once per frame

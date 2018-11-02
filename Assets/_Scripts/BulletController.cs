@@ -1,17 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Runtime.InteropServices;
 public class BulletController : MonoBehaviour
 {
+
+
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern void UpdateComponent(IntPtr component);
+
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern int GetScore(IntPtr component);
+
+    private IntPtr entityComponet;
 
     public float speed;
     public float screenHeight;
 
+
+
     // Use this for initialization
     void Start()
     {
-
+        entityComponet = GameObject.Find("Ship").GetComponent<PlayerController>().myEntityComponent;
     }
 
     // Update is called once per frame
@@ -43,6 +55,8 @@ public class BulletController : MonoBehaviour
 
             if (other.tag == "Enemy")
             {
+                UpdateComponent(entityComponet);
+                Score.scoreVal = GetScore(entityComponet);
                 Destroy(other.gameObject);
                 StartCoroutine(_destroyBullet());
 
@@ -51,11 +65,16 @@ public class BulletController : MonoBehaviour
 
             if (other.name == "Centipede_Head")
             {
+                UpdateComponent(entityComponet);
+                Score.scoreVal = GetScore(entityComponet);
                 Destroy(other.gameObject);
                 StartCoroutine(_destroyBullet());
             }
 
-            if(other.name == "Centipede_Body") {
+            if(other.name == "Centipede_Body")
+            {
+                UpdateComponent(entityComponet);
+                Score.scoreVal = GetScore(entityComponet);
                 Destroy(other.gameObject);
                 StartCoroutine(_destroyBullet());
             }

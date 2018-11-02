@@ -7,10 +7,13 @@ public class CentipedeBodyController : MonoBehaviour
 
     public GameObject centipedeHead;
     public GameObject canvas;
+
+	public bool isInGame;
     // Use this for initialization
     void Start()
     {
         this.name = "Centipede_Body";
+		isInGame = false;
     }
 
     // Update is called once per frame

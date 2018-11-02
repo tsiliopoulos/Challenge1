@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MushroomController : MonoBehaviour {
 
+	public bool isInGame;
 	// Use this for initialization
 	void Start () {
+		isInGame = false;
 		StartCoroutine(_renameMushroom());
 	}
 

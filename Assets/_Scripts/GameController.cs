@@ -10,8 +10,10 @@ public class GameController : MonoBehaviour {
   public static List<GameObject> gameObjects = new List<GameObject>();
 
 	public static bool GamePlaying;
-
-  public Text gameStatusLabel;
+    public static GameObject previousObject;
+    public Text gameStatusLabel;
+    public  static Button Undo;
+    public static Button Redo;
 	public static AudioSource enemyHitSound;
 
 	public static int numCentipedeHeads;
@@ -19,7 +21,10 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GamePlaying = false;
-		enemyHitSound = GetComponent<AudioSource>();
+        Undo = GameObject.Find("Undo").GetComponent<Button>();
+        Redo = GameObject.Find("Redo").GetComponent<Button>();
+
+        enemyHitSound = GetComponent<AudioSource>();
 		numCentipedeHeads = 0;
 	}
 
@@ -30,13 +35,13 @@ public class GameController : MonoBehaviour {
 
 	public void OnGameStart() {
 		GamePlaying = true;
-    gameStatusLabel.text = "Game Status: PLAYING";
+        gameStatusLabel.text = "Game Status: PLAYING";
 		PlayerController.canMove = true;
 	}
 
 	public void OnGameStop() {
 		GamePlaying = false;
-    gameStatusLabel.text = "Game Status: STOPPED";
+        gameStatusLabel.text = "Game Status: STOPPED";
 		PlayerController.canMove = false;
 	}
 }

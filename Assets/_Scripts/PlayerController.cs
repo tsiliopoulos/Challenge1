@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Runtime.InteropServices;
 
 public enum Directions
 {
@@ -15,8 +15,27 @@ public enum Directions
 [System.Serializable]
 public class PlayerController : MonoBehaviour
 {
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern IntPtr CreateEntity();  //create our entity
 
-	[Header("Options")]
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern IntPtr CreateComponent();  //create our component (in this case, only score)
+
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern void AttachComponent(IntPtr entity, IntPtr component);
+
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern void RemoveComponent(IntPtr entity, IntPtr component);
+
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern void UpdateComponent(IntPtr component);
+
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern int GetScore(IntPtr component);
+
+    [DllImport("EntityComponentSystemChallenge")]
+    public static extern void DeleteEntity(IntPtr entity);
+    [Header("Options")]
     public int playerSpeed;
 	public static bool canMove;
 	public GameObject bullet;
@@ -29,6 +48,11 @@ public class PlayerController : MonoBehaviour
 
 	private GameObject canvas;
 
+    public System.IntPtr myEntity;
+    public System.IntPtr myEntityComponent;
+
+    public bool isInGame;
+
 
     // Use this for initialization
     void Start()
@@ -36,6 +60,10 @@ public class PlayerController : MonoBehaviour
 		canvas = GameObject.FindWithTag("Canvas");
 		canMove = false;
         _resetMove();
+        myEntity = CreateEntity();
+        myEntityComponent = CreateComponent();
+        AttachComponent(myEntity, myEntityComponent);
+        isInGame = false;
     }
 
     // Update is called once per frame
@@ -155,4 +183,10 @@ public class PlayerController : MonoBehaviour
         canMoveUp = true;
         canMoveDown = true;
     }
+
+    private void OnApplicationQuit()
+    {
+        DeleteEntity(myEntity);
+    }
 }
+
