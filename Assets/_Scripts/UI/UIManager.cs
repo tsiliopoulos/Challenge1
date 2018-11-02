@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     public float panelSpeed;
     public Animator animator;
     public GameController gameController;
+    public GameObject shipInPanel;
 
     public static bool isVisible;
 
@@ -76,6 +77,8 @@ public class UIManager : MonoBehaviour
                 Cursor.visible = true;
 
                 PlayerController.canMove = false;
+                shipInPanel.SetActive(true);
+                
 
 
                 foreach (var tile in gameController.tiles)
@@ -85,10 +88,12 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        /* 
         if (GameController.GamePlaying == true && panel.activeInHierarchy)
         {
             StartCoroutine(this.ClosePanel());
         }
+        */
     }
 
     private IEnumerator ClosePanel()
@@ -117,6 +122,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
         isVisible = false;
+        shipInPanel.SetActive(false);
         panel.SetActive(false);
     }
 

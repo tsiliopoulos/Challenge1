@@ -13,7 +13,7 @@ public class BulletController : MonoBehaviour
     [DllImport("EntityComponentSystemChallenge")]
     public static extern int GetScore(IntPtr component);
 
-    private IntPtr entityComponet;
+    private IntPtr entityComponent;
 
     public float speed;
     public float screenHeight;
@@ -23,7 +23,7 @@ public class BulletController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        entityComponet = GameObject.Find("Ship").GetComponent<PlayerController>().myEntityComponent;
+        entityComponent = GameObject.FindWithTag("Player").GetComponent<PlayerController>().myEntityComponent;
     }
 
     // Update is called once per frame
@@ -55,8 +55,8 @@ public class BulletController : MonoBehaviour
 
             if (other.tag == "Enemy")
             {
-                UpdateComponent(entityComponet);
-                Score.scoreVal = GetScore(entityComponet);
+                UpdateComponent(entityComponent);
+                Score.scoreVal = GetScore(entityComponent);
                 Destroy(other.gameObject);
                 StartCoroutine(_destroyBullet());
 
@@ -65,21 +65,21 @@ public class BulletController : MonoBehaviour
 
             if (other.name == "Centipede_Head")
             {
-                UpdateComponent(entityComponet);
-                Score.scoreVal = GetScore(entityComponet);
+                UpdateComponent(entityComponent);
+                Score.scoreVal = GetScore(entityComponent);
                 Destroy(other.gameObject);
                 StartCoroutine(_destroyBullet());
             }
 
             if(other.name == "Centipede_Body")
             {
-                UpdateComponent(entityComponet);
-                Score.scoreVal = GetScore(entityComponet);
+                UpdateComponent(entityComponent);
+                Score.scoreVal = GetScore(entityComponent);
                 Destroy(other.gameObject);
                 StartCoroutine(_destroyBullet());
             }
 
-            if (other.tag == "Grid")
+            if ((other.tag == "Grid") || (other.tag == "Canvas"))
             {
                  Destroy(this.gameObject);
             }
